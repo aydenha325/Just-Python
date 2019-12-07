@@ -21,12 +21,6 @@ def isnum(num):
             return '띄어쓰기 없이 입력합니다', 0
         if num == 'exit':
             return '이렇게 포기하다니', 1
-        if num =='sex':
-            return '미친 새끼', 0
-        if num =='섹스':
-            return '병신 새끼', 0
-        if num =='6974':
-            return '그거 아냐 병신아', 0
         if int(num) != abs(int(num)):
             return '음수를 입력하지 마세요', 0
         if len(num) != 3:

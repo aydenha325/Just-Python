@@ -3,7 +3,7 @@ def input_num(xoy):
     while run:
         try:
             idx = int(input(f'{xoy} : '))
-            if idx > 3:
+            if (idx > 3) or (idx < 1):
                 print('number is out of range')
                 continue
         except:
@@ -25,6 +25,8 @@ def check_idx(board, idx_y, idx_x):
 
 def check_win(board, idx_y, idx_x, player):
     win_cnt = 0
+    end = False
+
     for minus in range(3):
         if board[idx_y - minus][idx_x] == player:
             win_cnt += 1
@@ -50,11 +52,14 @@ def check_win(board, idx_y, idx_x, player):
 
     win_cnt = 0
     for idx in range(3):
-        if board[idx][-idx] == player:
+        if board[idx][-(1+idx)] == player:
+            print(board[idx][-(1+idx)])
             win_cnt += 1
     if win_cnt == 3:
         end = True
         return end
+
+    return end
 
 
 def tictactoe_main():
@@ -73,7 +78,7 @@ def tictactoe_main():
 
                 change = check_idx(board, idx_y, idx_x)
                 if not change:
-                    print('this idx was overlapped')
+                    print(f'please input another index')
                     continue
 
             board[idx_y][idx_x] = player
